@@ -6,7 +6,7 @@ This is the IOT project based on ESP32 microcontroller.
 <img src="https://github.com/blaticslm/ESP32-IOT-project/blob/main/screenshot.png"  width="500">
 </p>
 
-## Feature Demo and presentation record
+## Feature Demo and presentation
 
 ## Backend and Frontend structure
 <p align="center">
