@@ -1,5 +1,6 @@
 # ESP32-IOT-project
 This is the IOT project based on ESP32 microcontroller.
+- project html file is just for viewing the page only.
 
 ## Screenshot
 <p align="center">
