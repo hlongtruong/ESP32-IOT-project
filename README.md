@@ -10,6 +10,8 @@ This is the IOT project based on ESP32 microcontroller.
 
 ## Backend and Frontend structure
 <p align="center">
+<img src="https://github.com/blaticslm/ESP32-IOT-project/blob/main/web_page_dynamic_loading/esp32_iot_project.png"  width="500">
+
 </p>
 
 ## Future improvement
