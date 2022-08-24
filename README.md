@@ -11,3 +11,8 @@ This is the IOT project based on ESP32 microcontroller.
 ## Backend and Frontend structure
 <p align="center">
 </p>
+
+## Future improvement
+- Android app for this application
+- Modify the naming of the program to make it more readable
+
