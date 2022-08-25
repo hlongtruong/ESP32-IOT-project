@@ -29,6 +29,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  // 3.3V in 10bit analog read is 675
   uint16_t temp0 = map(analogRead(INPUT0),0,675, 0, 255);
   uint16_t temp1 = map(analogRead(INPUT1),0,675, 0, 255);
   uint16_t temp2 = map(analogRead(INPUT2),0,675, 0, 255);
