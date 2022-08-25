@@ -223,62 +223,43 @@ void notFound() {
 }
 
 void handleMainPage(){
-  //Serial.println("sending web page");
   server.send(200, "text/html", index_html);
 }
 
 void handleMotor(){
   if(server.hasArg("motor0")) {
     String temp = server.arg("motor0");
-    inputValue1 = temp.equals("") ? inputValue1 : temp;
-  
-//  uint32_t duty0 = (uint32_t)inputValue1.toInt();
-//  ledcAnalogWrite(CHANNEL_0, duty0);
+    inputValue1 = temp.equals("")||temp.toInt()<50 || temp.toInt() > 245 ? inputValue1 : temp;
   
     server.send(200, "text/plain", inputValue1); 
     
   } else if(server.hasArg("motor1")){
       String temp = server.arg("motor1");
-      inputValue2 = temp.equals("") ? inputValue2 : temp;
-      
-    //  uint32_t duty1 = (uint32_t)inputValue2.toInt();
-    //  ledcAnalogWrite(CHANNEL_1, duty1);
+      inputValue2 = temp.equals("")||temp.toInt()<50 || temp.toInt() > 250 ? inputValue2 : temp;
     
       server.send(200, "text/plain", inputValue2); 
     
   } else if(server.hasArg("motor2")){
       String temp = server.arg("motor2");
-      inputValue3 = temp.equals("") ? inputValue3 : temp;
-    
-    //  uint32_t duty2 = (uint32_t)inputValue3.toInt();
-    //  ledcAnalogWrite(CHANNEL_2, duty2);
+      inputValue3 = temp.equals("")||temp.toInt()<50 || temp.toInt() > 255 ? inputValue3 : temp;
       
       server.send(200, "text/plain", inputValue3); 
     
   } else if(server.hasArg("motor3")){
       String temp = server.arg("motor3");
-      inputValue4 = temp.equals("") ? inputValue4 : temp;
-      
-    //  uint32_t duty3 = (uint32_t)inputValue4.toInt();
-    //  ledcAnalogWrite(CHANNEL_3, duty3);
+      inputValue4 = temp.equals("")||temp.toInt()<50 || temp.toInt() > 210 ? inputValue4 : temp;
       
       server.send(200, "text/plain", inputValue4); 
     
   } else if(server.hasArg("motor4")){
       String temp = server.arg("motor4");
-      inputValue5 = temp.equals("") ? inputValue5 : temp;
-      
-    //  uint32_t duty4 = (uint32_t)inputValue5.toInt();
-    //  ledcAnalogWrite(CHANNEL_4, duty4);
+      inputValue5 = temp.equals("")||temp.toInt()<50 || temp.toInt() > 255 ? inputValue5 : temp;
       
       server.send(200, "text/plain", inputValue5); 
    
   } else if(server.hasArg("motor5")){
       String temp = server.arg("motor5");
-      inputValue6 = temp.equals("") ? inputValue6 : temp;
-    
-    //  uint32_t duty5 = (uint32_t)inputValue6.toInt();
-    //  ledcAnalogWrite(CHANNEL_5, duty5);
+      inputValue6 = temp.equals("")||temp.toInt()<55 || temp.toInt() > 135 ? inputValue6 : temp;
       
       server.send(200, "text/plain", inputValue6); 
     
@@ -289,7 +270,6 @@ void handleMotor(){
 //
 
 void handleAllMotor() {
-  //here is secured by form input 
   inputValue1 = server.arg(PARAM_INPUT_1).equals("") ? inputValue1 : server.arg(PARAM_INPUT_1);
   inputValue2 = server.arg(PARAM_INPUT_2).equals("") ? inputValue2 : server.arg(PARAM_INPUT_2);
   inputValue3 = server.arg(PARAM_INPUT_3).equals("") ? inputValue3 : server.arg(PARAM_INPUT_3);
@@ -379,13 +359,14 @@ void setup() {
 
   //in case of rebooting
   disableCore1WDT();
-
-  //server setup
   Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
-  //WiFi.mode(WIFI_AP);
+  //server setup
+  //IF go with STA mode: 
+  WiFi.mode(WIFI_AP_STA);
   WiFi.begin(ssid, password);
-  //WiFi.softAP("test","asdfghjkl");
+
+  //IF go with AP wifi mode
+  WiFi.softAP("test","asdfghjkl");
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.println("WiFi Failed!");
     //return;
