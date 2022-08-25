@@ -13,7 +13,7 @@ You should go watch ***at least one of the videos below*** before watching the p
 
 - Part1: https://www.youtube.com/watch?v=ZbPQufXMKdA
 - Part2: https://www.youtube.com/watch?v=1BdyQ2VX56s
-- Presentation: 
+- Presentation: https://www.youtube.com/watch?v=VZbbzU-rg3w
 - Presentation slide: 
 
 ## Backend and Frontend structure
