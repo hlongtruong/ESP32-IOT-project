@@ -8,7 +8,8 @@ This is the IOT project based on ESP32 microcontroller.
 </p>
 
 ## Feature Demo and presentation
-- part1: 
+- Part1: https://www.youtube.com/watch?v=ZbPQufXMKdA
+- Part2: https://www.youtube.com/watch?v=1BdyQ2VX56s
 
 ## Backend and Frontend structure
 <p align="center">
