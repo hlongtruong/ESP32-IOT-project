@@ -14,7 +14,7 @@ You should go watch ***at least one of the videos below*** before watching the p
 - Part1: https://www.youtube.com/watch?v=ZbPQufXMKdA
 - Part2: https://www.youtube.com/watch?v=1BdyQ2VX56s
 - Presentation: https://www.youtube.com/watch?v=VZbbzU-rg3w
-- Presentation slide: 
+- Presentation slide: https://docs.google.com/presentation/d/12Sihf_v3e3GYwmaIVO8cE9-19D6UETqL85ZU46FzRto/edit#slide=id.g147508dc7ff_0_550
 
 ## Backend and Frontend structure
 <p align="center">
