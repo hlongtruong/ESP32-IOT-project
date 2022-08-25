@@ -28,8 +28,13 @@ void setup() {
 }
 
 void loop() {
+<<<<<<< Updated upstream
   // put your main code here, to run repeatedly:
   // 3.3V in 10bit analog read is 675
+=======
+  //since ESP32 only output 3.3V, when putting to Analog input of Arduino, the maximum value value is 675
+  //mapping it to 8bit, 255, pwm output of arduino 
+>>>>>>> Stashed changes
   uint16_t temp0 = map(analogRead(INPUT0),0,675, 0, 255);
   uint16_t temp1 = map(analogRead(INPUT1),0,675, 0, 255);
   uint16_t temp2 = map(analogRead(INPUT2),0,675, 0, 255);

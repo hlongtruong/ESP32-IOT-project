@@ -222,10 +222,13 @@ void notFound() {
   
 }
 
+////http://xxx.xxx.xxx.xxx
 void handleMainPage(){
   server.send(200, "text/html", index_html);
 }
 
+//http://xxx.xxx.xxx.xxx/handleMotor?motor0=65
+//http://xxx.xxx.xxx.xxx/handleMotor?motor1=65
 void handleMotor(){
   //slider on webpage
   if(server.hasArg("motor0")) {
@@ -268,8 +271,7 @@ void handleMotor(){
   
 }
 
-//
-
+//http://xxx.xxx.xxx.xxx/page_result?input1=yy&input2=yy....
 void handleAllMotor() {
   //form on webpages: need to add more limits 
   inputValue1 = server.arg(PARAM_INPUT_1).equals("") ? inputValue1 : server.arg(PARAM_INPUT_1);
@@ -283,6 +285,7 @@ void handleAllMotor() {
   server.send(302, "text/plain", ""); 
 }
 
+//http://xxx.xxx.xxx.xxx/add?input1_plus=whatever number you want, this api does not read the argument's value, just to detect the existence of the argument
 void handleButtonPlus() {
   if(server.hasArg("input1_plus")) {
     inputValue1 = inputValue1.equals("245")? inputValue1 : String(inputValue1.toInt()+1);
@@ -310,7 +313,7 @@ void handleButtonPlus() {
   }
 }
 
-
+//http://xxx.xxx.xxx.xxx/minus?input1_plus=whatever number you want, same as handleButtonPlus
 void handleButtonMinus() {    
   if(server.hasArg("input1_minus")) {
     inputValue1 = inputValue1.equals("50")? inputValue1 : String(inputValue1.toInt()-1);
@@ -363,12 +366,13 @@ void setup() {
   disableCore1WDT();
   Serial.begin(115200);
   //server setup
-  //IF go with STA mode: 
+  //both wifi mode: you can access ESP32 server from its inner ip address if you connect to softAP wifi(ESP32 act as wifi)
+  //Meanwhile, you can also access ESP32 server from your local network
+  //AP_STA: ESP32 has both connection methods
   WiFi.mode(WIFI_AP_STA);
   WiFi.begin(ssid, password);
-
-  //IF go with AP wifi mode
   WiFi.softAP("test","asdfghjkl");
+  
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.println("WiFi Failed!");
     //return;
