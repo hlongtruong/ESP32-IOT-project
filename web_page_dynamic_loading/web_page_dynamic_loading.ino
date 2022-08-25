@@ -26,11 +26,8 @@
 
 WebServer server(80);//server on 80
 
-const char* ssid = "NETGEAR59";
-const char* password = "purpletrumpet839";
-
-//const char* ssid = "myLapTopWifi";
-//const char* password = "asdfghjkl";
+const char* ssid = "myLapTopWifi";
+const char* password = "asdfghjkl";
 
 //for obtaining the parameter's value
 const char* PARAM_INPUT_1 = "input1";
@@ -88,12 +85,12 @@ const char index_html[] PROGMEM = R"rawliteral(
       <center>
       <form action ="/page_result">
         <p style="color:red;font-size:15px;"> Type PWM (not recommanded).</p>
-          Motor0: <input type="number" min="0" max="255" id="r1" name ="input1"/><br>
-          Motor1: <input type="number" min="0" max="255" id="r2" name ="input2"/><br>
-          Motor2: <input type="number" min="0" max="255" id="r3" name ="input3"/><br>
-          Motor3: <input type="number" min="0" max="255" id="r4" name ="input4"/><br>
-          Motor4: <input type="number" min="0" max="255" id="r5" name ="input5"/><br>
-          Motor5: <input type="number" min="0" max="255" id="r6" name ="input6"/><br>
+          Motor0: <input type="number" min="50" max="245" id="r1" name ="input1"/><br>
+          Motor1: <input type="number" min="50" max="250" id="r2" name ="input2"/><br>
+          Motor2: <input type="number" min="50" max="255" id="r3" name ="input3"/><br>
+          Motor3: <input type="number" min="50" max="210" id="r4" name ="input4"/><br>
+          Motor4: <input type="number" min="50" max="255" id="r5" name ="input5"/><br>
+          Motor5: <input type="number" min="55" max="135" id="r6" name ="input6"/><br>
 
           <input type="submit" value="Submit Total">
       </form>
@@ -101,22 +98,22 @@ const char index_html[] PROGMEM = R"rawliteral(
       <div class="float-container">
         <div class="float-left">
           <p style="color:red;font-size:15px;"> Slider PWM (AP wifi mode).</p>
-          Motor0: <input type="range" value="128" min="0" max="255" id="m1" name ="motor0" oninput="updateSlider(this.value,this.name,'motor0_PWM', 'motor0_PWM2')"/>
+          Motor0: <input type="range" value="128" min="50" max="245" id="m1" name ="motor0" oninput="updateSlider(this.value,this.name,'motor0_PWM', 'motor0_PWM2')"/>
           <span id="motor0_PWM"></span><br>
           
-          Motor1: <input type="range" value="128" min="0" max="255" id="m2" name ="motor1" oninput="updateSlider(this.value,this.name,'motor1_PWM', 'motor1_PWM2')"/>
+          Motor1: <input type="range" value="128" min="50" max="250" id="m2" name ="motor1" oninput="updateSlider(this.value,this.name,'motor1_PWM', 'motor1_PWM2')"/>
           <span id="motor1_PWM"></span><br>
           
-          Motor2: <input type="range"  value="128" min="0" max="255" id="m3" name ="motor2" oninput="updateSlider(this.value,this.name,'motor2_PWM', 'motor2_PWM2')"/>
+          Motor2: <input type="range"  value="128" min="50" max="255" id="m3" name ="motor2" oninput="updateSlider(this.value,this.name,'motor2_PWM', 'motor2_PWM2')"/>
           <span id="motor2_PWM"></span><br>
           
-          Motor3: <input type="range" value="128" min="0" max="255" id="m4" name ="motor3" oninput="updateSlider(this.value,this.name,'motor3_PWM', 'motor3_PWM2')" />
+          Motor3: <input type="range" value="128" min="50" max="210" id="m4" name ="motor3" oninput="updateSlider(this.value,this.name,'motor3_PWM', 'motor3_PWM2')" />
           <span id="motor3_PWM"></span><br>
           
-          Motor4: <input type="range" value="128" min="0" max="255" id="m5" name ="motor4" oninput="updateSlider(this.value,this.name,'motor4_PWM', 'motor4_PWM2')" />
+          Motor4: <input type="range" value="128" min="50" max="255" id="m5" name ="motor4" oninput="updateSlider(this.value,this.name,'motor4_PWM', 'motor4_PWM2')" />
           <span id="motor4_PWM"></span><br>
           
-          Motor5: <input type="range" value="128" min="0" max="255" id="m6" name ="motor5" oninput="updateSlider(this.value,this.name,'motor5_PWM', 'motor5_PWM2')" />
+          Motor5: <input type="range" value="128" min="55" max="135" id="m6" name ="motor5" oninput="updateSlider(this.value,this.name,'motor5_PWM', 'motor5_PWM2')" />
           <span id="motor5_PWM"></span><br>
           
             <input type="button" value="Reset slider" onclick="resetFunc()">
@@ -292,6 +289,7 @@ void handleMotor(){
 //
 
 void handleAllMotor() {
+  //here is secured by form input 
   inputValue1 = server.arg(PARAM_INPUT_1).equals("") ? inputValue1 : server.arg(PARAM_INPUT_1);
   inputValue2 = server.arg(PARAM_INPUT_2).equals("") ? inputValue2 : server.arg(PARAM_INPUT_2);
   inputValue3 = server.arg(PARAM_INPUT_3).equals("") ? inputValue3 : server.arg(PARAM_INPUT_3);
@@ -305,11 +303,11 @@ void handleAllMotor() {
 
 void handleButtonPlus() {
   if(server.hasArg("input1_plus")) {
-    inputValue1 = inputValue1.equals("255")? inputValue1 : String(inputValue1.toInt()+1);
+    inputValue1 = inputValue1.equals("245")? inputValue1 : String(inputValue1.toInt()+1);
     server.send(200, "text/plain", inputValue1);
     
   } else if(server.hasArg("input2_plus")){
-    inputValue2 = inputValue2.equals("255")? inputValue2 : String(inputValue2.toInt()+1);
+    inputValue2 = inputValue2.equals("250")? inputValue2 : String(inputValue2.toInt()+1);
      server.send(200, "text/plain", inputValue2);
     
   } else if(server.hasArg("input3_plus")){
@@ -317,7 +315,7 @@ void handleButtonPlus() {
     server.send(200, "text/plain", inputValue3);
     
   } else if(server.hasArg("input4_plus")){
-    inputValue4 = inputValue4.equals("255")? inputValue4 : String(inputValue4.toInt()+1);
+    inputValue4 = inputValue4.equals("210")? inputValue4 : String(inputValue4.toInt()+1);
      server.send(200, "text/plain", inputValue4);
     
   } else if(server.hasArg("input5_plus")){
@@ -325,7 +323,7 @@ void handleButtonPlus() {
      server.send(200, "text/plain", inputValue5);
    
   } else if(server.hasArg("input6_plus")){
-    inputValue6 = inputValue6.equals("255")? inputValue6 : String(inputValue6.toInt()+1);
+    inputValue6 = inputValue6.equals("135")? inputValue6 : String(inputValue6.toInt()+1);
     server.send(200, "text/plain", inputValue6);
   }
 }
@@ -333,27 +331,27 @@ void handleButtonPlus() {
 
 void handleButtonMinus() {    
   if(server.hasArg("input1_minus")) {
-    inputValue1 = inputValue1.equals("0")? inputValue1 : String(inputValue1.toInt()-1);
+    inputValue1 = inputValue1.equals("50")? inputValue1 : String(inputValue1.toInt()-1);
     server.send(200, "text/plain", inputValue1);
     
   } else if(server.hasArg("input2_minus")){
-    inputValue2 = inputValue2.equals("0")? inputValue2 : String(inputValue2.toInt()-1);
+    inputValue2 = inputValue2.equals("50")? inputValue2 : String(inputValue2.toInt()-1);
     server.send(200, "text/plain", inputValue2);
    
   } else if(server.hasArg("input3_minus")){
-    inputValue3 = inputValue3.equals("0")? inputValue3 : String(inputValue3.toInt()-1);
+    inputValue3 = inputValue3.equals("50")? inputValue3 : String(inputValue3.toInt()-1);
     server.send(200, "text/plain", inputValue3);
     
   } else if(server.hasArg("input4_minus")){
-    inputValue4 = inputValue4.equals("0")? inputValue4 : String(inputValue4.toInt()-1);
+    inputValue4 = inputValue4.equals("50")? inputValue4 : String(inputValue4.toInt()-1);
      server.send(200, "text/plain", inputValue4);
     
   } else if(server.hasArg("input5_minus")){
-    inputValue5 = inputValue3.equals("0")? inputValue5 : String(inputValue5.toInt()-1);
+    inputValue5 = inputValue3.equals("50")? inputValue5 : String(inputValue5.toInt()-1);
      server.send(200, "text/plain", inputValue5);
    
   } else if(server.hasArg("input6_minus")){
-    inputValue6 = inputValue6.equals("0")? inputValue6 : String(inputValue6.toInt()-1);
+    inputValue6 = inputValue6.equals("55")? inputValue6 : String(inputValue6.toInt()-1);
     server.send(200, "text/plain", inputValue6); 
   }
 
@@ -433,23 +431,23 @@ void loop() {
   ledcAnalogWrite(CHANNEL_5, duty5);
 
 
-  if(digitalRead(19)== HIGH) {
-    Serial.print("MOTOR0: ");
-    Serial.println(inputValue1);
-    Serial.print("MOTOR1: ");
-    Serial.println(inputValue2);
-    Serial.print("MOTOR2: ");
-    Serial.println(inputValue3);
-    Serial.print("MOTOR3: ");
-    Serial.println(inputValue4);
-    Serial.print("MOTOR4: ");
-    Serial.println(inputValue5);
-    Serial.print("MOTOR5: ");
-    Serial.println(inputValue6);
-    Serial.println();
-
-    delay(500);
-  }
+//  if(digitalRead(19)== HIGH) {
+//    Serial.print("MOTOR0: ");
+//    Serial.println(inputValue1);
+//    Serial.print("MOTOR1: ");
+//    Serial.println(inputValue2);
+//    Serial.print("MOTOR2: ");
+//    Serial.println(inputValue3);
+//    Serial.print("MOTOR3: ");
+//    Serial.println(inputValue4);
+//    Serial.print("MOTOR4: ");
+//    Serial.println(inputValue5);
+//    Serial.print("MOTOR5: ");
+//    Serial.println(inputValue6);
+//    Serial.println();
+//
+//    delay(500);
+//  }
 
   server.handleClient();
 
