@@ -227,6 +227,7 @@ void handleMainPage(){
 }
 
 void handleMotor(){
+  //slider on webpage
   if(server.hasArg("motor0")) {
     String temp = server.arg("motor0");
     inputValue1 = temp.equals("")||temp.toInt()<50 || temp.toInt() > 245 ? inputValue1 : temp;
@@ -270,6 +271,7 @@ void handleMotor(){
 //
 
 void handleAllMotor() {
+  //form on webpages: need to add more limits 
   inputValue1 = server.arg(PARAM_INPUT_1).equals("") ? inputValue1 : server.arg(PARAM_INPUT_1);
   inputValue2 = server.arg(PARAM_INPUT_2).equals("") ? inputValue2 : server.arg(PARAM_INPUT_2);
   inputValue3 = server.arg(PARAM_INPUT_3).equals("") ? inputValue3 : server.arg(PARAM_INPUT_3);
