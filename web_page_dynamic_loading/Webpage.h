@@ -49,22 +49,22 @@ const char index_html[] PROGMEM = R"rawliteral(
       <div class="float-container">
         <div class="float-left">
           <p style="color:red;font-size:15px;"> Slider PWM (AP wifi mode).</p>
-          Motor0: <input type="range" value="128" min="50" max="245" id="m1" name ="motor0" oninput="updateSlider(this.value,this.name,'motor0_PWM', 'motor0_PWM2')"/>
+          Motor0: <input type="range" value="128" min="0" max="245" id="m1" name ="motor0" oninput="updateSlider(this.value,this.name,'motor0_PWM', 'motor0_PWM2')"/>
           <span id="motor0_PWM"></span><br>
           
-          Motor1: <input type="range" value="128" min="50" max="250" id="m2" name ="motor1" oninput="updateSlider(this.value,this.name,'motor1_PWM', 'motor1_PWM2')"/>
+          Motor1: <input type="range" value="128" min="0" max="1023" id="m2" name ="motor1" oninput="updateSlider(this.value,this.name,'motor1_PWM', 'motor1_PWM2')"/>
           <span id="motor1_PWM"></span><br>
           
-          Motor2: <input type="range"  value="128" min="50" max="255" id="m3" name ="motor2" oninput="updateSlider(this.value,this.name,'motor2_PWM', 'motor2_PWM2')"/>
+          Motor2: <input type="range"  value="128" min="0" max="1023" id="m3" name ="motor2" oninput="updateSlider(this.value,this.name,'motor2_PWM', 'motor2_PWM2')"/>
           <span id="motor2_PWM"></span><br>
           
-          Motor3: <input type="range" value="128" min="50" max="210" id="m4" name ="motor3" oninput="updateSlider(this.value,this.name,'motor3_PWM', 'motor3_PWM2')" />
+          Motor3: <input type="range" value="128" min="0" max="1023" id="m4" name ="motor3" oninput="updateSlider(this.value,this.name,'motor3_PWM', 'motor3_PWM2')" />
           <span id="motor3_PWM"></span><br>
           
-          Motor4: <input type="range" value="128" min="50" max="255" id="m5" name ="motor4" oninput="updateSlider(this.value,this.name,'motor4_PWM', 'motor4_PWM2')" />
+          Motor4: <input type="range" value="128" min="0" max="1023" id="m5" name ="motor4" oninput="updateSlider(this.value,this.name,'motor4_PWM', 'motor4_PWM2')" />
           <span id="motor4_PWM"></span><br>
           
-          Motor5: <input type="range" value="128" min="55" max="135" id="m6" name ="motor5" oninput="updateSlider(this.value,this.name,'motor5_PWM', 'motor5_PWM2')" />
+          Motor5: <input type="range" value="128" min="0" max="1023" id="m6" name ="motor5" oninput="updateSlider(this.value,this.name,'motor5_PWM', 'motor5_PWM2')" />
           <span id="motor5_PWM"></span><br>
           
             <input type="button" value="Reset slider" onclick="resetFunc()">
